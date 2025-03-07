@@ -62,10 +62,7 @@ $admin = mysqli_fetch_assoc($result);
                     <div class="col-md-6 mt-3">
                         <label for="password" class="form-label">Password:</label>
                         <input class="form-control" type="password" name="password" placeholder="Enter new password (optional)">
-                    </div>
-                     
-
-
+                    </div> 
                     <div class="col-12 text-center">
                         <button type="submit" class="btn btn-success mt-4">Update Profile</button>
                     </div>
