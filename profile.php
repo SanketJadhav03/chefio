@@ -17,9 +17,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Update query based on whether a new password is provided
     if (!empty($password)) {
         $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-        $updateQuery = "UPDATE admins SET username = '$username', email = '$email', mobile_number = '$mobile_number', password = '$hashedPassword', updated_at = '$updated_at' WHERE id = $adminId";
+        $updateQuery = "UPDATE admins SET username = '$username', email = '$email', mobile_number = '$mobile_number', password = '$hashedPassword'  WHERE id = $adminId";
     } else {
-        $updateQuery = "UPDATE admins SET username = '$username', email = '$email', mobile_number = '$mobile_number', updated_at = '$updated_at' WHERE id = $adminId";
+        $updateQuery = "UPDATE admins SET username = '$username', email = '$email', mobile_number = '$mobile_number' WHERE id = $adminId";
     }
 
     // Execute the update query and set the message
@@ -63,31 +63,7 @@ $admin = mysqli_fetch_assoc($result);
                         <label for="password" class="form-label">Password:</label>
                         <input class="form-control" type="password" name="password" placeholder="Enter new password (optional)">
                     </div>
-                    <div class="col-md-6 mt-3">
-                        <label for="created_at" class="form-label">Created At:</label>
-                        <?php
-                        $utcDate = $admin['created_at'];
-                        $date = new DateTime($utcDate, new DateTimeZone('UTC'));
-                        $date->setTimezone(new DateTimeZone('Asia/Kolkata'));
-                        ?>
-                        <input class="form-control" type="text" name="created_at" value="<?php echo $date->format('d/m/Y h:i:s A'); ?>" readonly>
-                    </div>
-                    <div class="col-md-6 mt-3">
-                        <label for="updated_at" class="form-label">Last Updated At:</label>
-                        <?php
-                        if (!empty($admin['updated_at'])) {
-                            // Assuming 'updated_at' is stored in UTC, convert it to IST (Asia/Kolkata)
-                            $updatedUtcDate = $admin['updated_at'];
-                            $updatedDate = new DateTime($updatedUtcDate, new DateTimeZone('UTC')); // Original date in UTC
-                            $updatedDate->setTimezone(new DateTimeZone('Asia/Kolkata')); // Convert to IST
-                            // Format the date in 'd/m/Y h:i:s A' (AM/PM format)
-                            $formattedUpdatedAt = $updatedDate->format('d/m/Y h:i:s A');
-                        } else {
-                            $formattedUpdatedAt = "N/A";
-                        }
-                        ?>
-                        <input class="form-control" type="text" name="updated_at" value="<?php echo $formattedUpdatedAt; ?>" readonly>
-                    </div>
+                     
 
 
                     <div class="col-12 text-center">
