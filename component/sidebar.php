@@ -73,6 +73,12 @@
             <p>Prepare Time</p>
         </a>
     </li>
+    <li class="nav-item">
+        <a href="<?= $base_url ?>genrate/index.php" class="nav-link">
+            <i class="nav-icon fas fa-clock"></i>
+            <p>Genrate Racipes</p>
+        </a>
+    </li>
     <!-- Logout -->
     <li class="nav-item">
         <a href="<?= $base_url ?>logout.php" class="nav-link">
