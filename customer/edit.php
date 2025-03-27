@@ -19,7 +19,7 @@ if (isset($_POST["customer_update"])) {
     $customer_password = mysqli_real_escape_string($conn, $_POST["customer_password"]);
     $customer_phone = mysqli_real_escape_string($conn, $_POST["customer_phone"]);
     $customer_address = mysqli_real_escape_string($conn, $_POST["customer_address"]);
-    $customer_status = isset($_POST["customer_status"]) ? 1 : 0;
+    $customer_status = 1;
     $customer_image = $_FILES["customer_image"]["name"];
     $customer_image_temp = $_FILES["customer_image"]["tmp_name"];
 
